@@ -1,0 +1,8 @@
+.qrCode {
+  border: 2px solid #000;
+  padding: 10px;
+}
+
+.qrCode.red {
+  border-color: rgb(151, 109, 109);
+}

@@ -1,0 +1,11 @@
+@media (max-width: 450px) {
+  form {
+    min-width: 95%;
+  }
+}
+
+button:hover {
+  background: #2d517e;
+  transition: 0.5s;
+  color: white;
+}
