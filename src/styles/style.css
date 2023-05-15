@@ -11,8 +11,14 @@ body {
 .scroll-x {
   overflow-x: scroll;
 }
+.scroll-y{
+  overflow-y: scroll;
+}
 .user {
   width: fit-content;
+}
+.Icourse{
+  max-height: 10px;
 }
 .fit-content {
   max-width: fit-content;

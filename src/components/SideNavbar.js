@@ -35,6 +35,10 @@ function Navbar() {
           <Image className='pl3' src={AttendancePic} alt="user logo" width={70} height={65} />
           Attendance
         </Link>
+        <Link href='/Login' className='tc flex flex-column menu-item pointer w-10 pt3 pb3 bg-gray white'>
+          <Image className='pl3' src={AttendancePic} alt="user logo" width={70} height={65} />
+          Sign Out
+        </Link>
       </nav>
     </div>
   );

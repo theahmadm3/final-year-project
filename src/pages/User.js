@@ -3,6 +3,7 @@ import Image from "next/image";
 import userPic from '../Images/Rick.jpg';
 import Course from '../Images/course.png';
 import SideNavbar from '../components/SideNavbar'
+import Footer from 'No/components/Footer';
 
 function User() {
     let Department = "Student Department";
@@ -46,6 +47,7 @@ function User() {
                     </p>
                 </section>
             </div>
+            <Footer />
         </>
     );
 }
