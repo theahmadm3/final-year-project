@@ -26,6 +26,15 @@ function Login() {
             alert("Incorrect ID or password");
         }
     }
+    
+    switch (key) {
+        case value:
+            
+            break;
+    
+        default:
+            break;
+    }
     return (
         <form onSubmit={submitForm} className="w-40 bg-white-80 center mb2 mt5">
             <div className="flex justify-center bn shadow-1 pa4 flex-column">
