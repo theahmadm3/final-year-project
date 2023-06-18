@@ -15,6 +15,16 @@
   ],
   "rootMainFiles": [],
   "pages": {
+    "/Attendance": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Attendance.js"
+    ],
+    "/AttendanceList": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/AttendanceList.js"
+    ],
     "/Instructor": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

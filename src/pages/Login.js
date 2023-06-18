@@ -1,8 +1,9 @@
 import IdInput from "No/components/IdInput";
 import "tachyons";
-import { Students } from "No/data/students";
+import { students } from "No/data/students";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { instructors } from "No/data/instructors";
 
 function Login() {
     const [id, setId] = useState("");
@@ -17,24 +18,23 @@ function Login() {
     };
     const submitForm = (e) => {
         e.preventDefault();
-        const student = Students.find((student) => student.id === Number(id) && student.password === password);
+        const student = students.find((student) => { 
+            return student.id === Number(id) && student.password === password
+        });
+        const instructor = instructors.find((instructor) => instructor.id === Number(id) && instructor.password === password);
         console.log(student)
+        console.log(instructor)
+        localStorage.setItem('user', JSON.stringify(student ?? instructor))
         if (student) {
             router.push("/User");
         }
-        else {
+        else if(instructor) {
+            router.push("/Instructor");
+        } else {
             alert("Incorrect ID or password");
         }
     }
     
-    switch (key) {
-        case value:
-            
-            break;
-    
-        default:
-            break;
-    }
     return (
         <form onSubmit={submitForm} className="w-40 bg-white-80 center mb2 mt5">
             <div className="flex justify-center bn shadow-1 pa4 flex-column">
