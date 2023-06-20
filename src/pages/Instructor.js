@@ -1,7 +1,6 @@
 import "tachyons";
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
-import SideNavbar from '../components/SideNavbar';
 import { getCoords } from '../utils';
 
 function Instructor() {
@@ -14,7 +13,6 @@ function Instructor() {
 
   return (
     <>
-      <SideNavbar />
         <div className='pa2 center w-100 mt1 shadow-1 bg-transparent'>
           <h1 className='white'> Instructor Page </h1>
           <section className='w-100 pa1'>
