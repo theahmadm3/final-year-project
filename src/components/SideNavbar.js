@@ -19,8 +19,8 @@ function Navbar() {
 
   useEffect(() => {
     if (typeof localStorage !== 'undefined') {
-      const user = JSON.parse(localStorage.getItem('user'));
-      setIsInstructor(user.type === 'INST');
+      const user = JSON.parse(localStorage?.getItem('user'));
+      setIsInstructor(user?.type === 'INST');
     }
   }, []);
 

@@ -1,11 +1,11 @@
 import 'tachyons';
 import SideNavbar from '../components/SideNavbar'
 import Biometrics from 'No/components/biometrics/Biometrics';
-import Footer from 'No/components/Footer';
+import Footer from '../components/Footer';
 import { QrReader } from 'react-qr-reader';
 import { useState } from 'react';
 import { getCoords } from '../utils';
-import getPreciseDistance from 'geolib/es/getPreciseDistance';
+import getDistance from 'geolib/es/getDistance';
 
 function Attendance() {
 
@@ -24,9 +24,9 @@ function Attendance() {
       if(data.expireOn < Date.now()){
         return alert("attendance has expired!!")
       }
-      alert(getPreciseDistance(studCoords, instructorCoords, 1000 ));
+      // alert(getDistance(studCoords, instructorCoords));
       if (
-        // getPreciseDistance(studCoords, instructorCoords, 1000) > 20 ||
+        getDistance(studCoords, instructorCoords) > 20 ||
         !biometricsVerified()
       ) {
         setStatus('FAILED');
@@ -45,11 +45,11 @@ function Attendance() {
       setStatus('SUCCESS')
     }
 
-    const callapi = async ()=>{
-      const res = await fetch('/api/hello')
-      console.log(await res.json())
-    }
-    callapi()
+    // const callapi = async ()=>{
+    //   const res = await fetch('/api/hello')
+    //   console.log(await res.json())
+    // }
+    // callapi()
 
     if(status == 'SUCCESS'){
       return <p>success</p>
@@ -59,6 +59,7 @@ function Attendance() {
 
     return (
       <>
+        <div></div>
         <SideNavbar />
         {/* <Biometrics /> */}
         {!scanQR ? (
@@ -71,18 +72,18 @@ function Attendance() {
         ) : (
           <>
             <QrReader
-              scanDelay={300}
+              scanDelay={500}
               constraints={{ facingMode: 'environment' }}
               onResult={(result, error) => {
-                setScanQR(false)
                 if (!!result) {
+                  setScanQR(false)
                   setData(result);
                   const data = JSON.parse(result.text);
                   takeAttendance(data);
                 }
 
                 if (!!error) {
-                  console.info(error);
+                  // alert(JSON.stringify(error));
                 }
               }}
               style={{ width: '100%' }}
