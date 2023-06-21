@@ -14,9 +14,9 @@ function Attendance() {
     const [scanQR, setScanQR] = useState(false);
     const [status, setStatus] = useState('')
 
-    const biometricsVerified = () => {
-      return confirm("are you authorized?")
-    }
+   // const biometricsVerified = () => {
+     // return confirm("are you authorized?")
+    // }
 
     const takeAttendance = async (data)=>{
       const studCoords = await getCoords()
@@ -26,9 +26,8 @@ function Attendance() {
       }
       // alert(getDistance(studCoords, instructorCoords));
       if (
-        getDistance(studCoords, instructorCoords) > 20000 ||
-        !biometricsVerified()
-      ) {
+        getDistance(studCoords, instructorCoords) > 20000
+              ) {
         setStatus('FAILED');
         return;
       }
