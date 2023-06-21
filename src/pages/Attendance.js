@@ -26,7 +26,7 @@ function Attendance() {
       }
       // alert(getDistance(studCoords, instructorCoords));
       if (
-        getDistance(studCoords, instructorCoords) > 20 ||
+        getDistance(studCoords, instructorCoords) > 20000 ||
         !biometricsVerified()
       ) {
         setStatus('FAILED');
