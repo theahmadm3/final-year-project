@@ -5,7 +5,36 @@ import Footer from '../components/Footer';
 import { QrReader } from 'react-qr-reader';
 import { useState } from 'react';
 import { getCoords } from '../utils';
-import getDistance from 'geolib/es/getDistance';
+// import getDistance from 'geolib/es/getDistance';
+
+function getDistance(coord1, coord2) {
+  // Convert degrees to radians
+  const lat1Rad = toRadians(coord1.latitude);
+  const lon1Rad = toRadians(coord1.longitude);
+  const lat2Rad = toRadians(coord2.latitude);
+  const lon2Rad = toRadians(coord2.longitude);
+
+  // Radius of the Earth in kilometers
+  const radius = 6371;
+
+  // Haversine formula
+  const dlat = lat2Rad - lat1Rad;
+  const dlon = lon2Rad - lon1Rad;
+  const a =
+    Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+    Math.cos(lat1Rad) *
+      Math.cos(lat2Rad) *
+      Math.sin(dlon / 2) *
+      Math.sin(dlon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = (radius * c) / 1000;
+
+  return distance;
+}
+
+function toRadians(degrees) {
+  return degrees * (Math.PI / 180);
+}
 
 function Attendance() {
 
@@ -14,9 +43,9 @@ function Attendance() {
     const [scanQR, setScanQR] = useState(false);
     const [status, setStatus] = useState('')
 
-   // const biometricsVerified = () => {
-     // return confirm("are you authorized?")
-    // }
+    const biometricsVerified = () => {
+      return confirm("are you authorized?")
+    }
 
     const takeAttendance = async (data)=>{
       const studCoords = await getCoords()
@@ -26,8 +55,9 @@ function Attendance() {
       }
       // alert(getDistance(studCoords, instructorCoords));
       if (
-        getDistance(studCoords, instructorCoords) > 20000
-              ) {
+        getDistance(studCoords, instructorCoords) > 20000 ||
+        !biometricsVerified()
+      ) {
         setStatus('FAILED');
         return;
       }
