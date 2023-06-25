@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'tachyons';
-import SideNavbar from '../components/SideNavbar';
+import INavbar from '../components/InstructorSideNavbar';
 
 export default function AttendanceList() {
   const [list, setList] = useState([]);
@@ -23,7 +23,7 @@ export default function AttendanceList() {
 
   return (
     <>
-      <SideNavbar />
+      <INavbar />
       <table className='tc w-100 mw8 center ba b--black-20 br3 mt4'>
         <thead className='bg-light-gray'>
           <tr>
