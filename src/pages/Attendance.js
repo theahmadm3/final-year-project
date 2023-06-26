@@ -81,23 +81,25 @@ function Attendance() {
     // callapi()
 
     if(status == 'SUCCESS'){
-      return <p>success</p>
+      alert("Attendance Successful");
     } else if(status == 'FAILED'){
-      return <p>failed</p>
+      alert("Attendance Failure");
     }
 
     return (
       <>
-        <div></div>
+        
         <SideNavbar />
         {/* <Biometrics /> */}
         {!scanQR ? (
-          <button
+          <div className="center pa4 ma2 bn shadow-1">
+            <button className="center br3 pa2 ma2"
             onClick={async () => {
               setScanQR(true);
             }}>
-            take attendance
+            Take Attendance
           </button>
+          </div>
         ) : (
           <>
             <QrReader
